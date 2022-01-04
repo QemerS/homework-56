@@ -1,0 +1,40 @@
+﻿
+@{
+    ViewData["Title"] = "Update";
+    Layout = "~/Areas/adminka/Views/Shared/_Layout.cshtml";
+}
+
+@using Shopping.Models
+@model Product
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-6">
+            <form method="post" asp-area="adminka" asp-controller="product" asp-action="update" enctype="multipart/form-data">
+                <div class="mb-3">
+                    <img src="~/Uploads/@Model.Image" alt="Alternate Text" width="100" /> @*error-fix OLMADI*@
+                    <label asp-for="@Model.ImageFile" class="form-label">Image</label> @*bu setirdeki @Model.Image eledim ImageFile OLMADI*@ 
+                    <input type="file" class="form-control" asp-for="@Model.ImageFile">
+                    <span asp-validation-for="@Model.ImageFile" class="text-danger"></span>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="@Model.Title" class="form-label">Title</label>
+                    <input class="form-control" asp-for="@Model.Title">
+                    <span asp-validation-for="@Model.Title" class="text-danger"></span>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="@Model.Price" class="form-label">Price</label>
+                    <input class="form-control" asp-for="@Model.Price">
+                    <span asp-validation-for="@Model.Price" class="text-danger"></span>
+                </div>
+
+                <input asp-for="@Model.Id" hidden />
+                <input asp-for="@Model.Image" hidden />
+                <input asp-for="@Model.CreatedDate" hidden />
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+

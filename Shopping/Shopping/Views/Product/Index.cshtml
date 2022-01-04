@@ -1,0 +1,46 @@
+﻿<!-- Page Content -->
+<div class="page-heading products-heading header-text">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="text-content">
+                    <h4>new arrivals</h4>
+                    <h2>sixteen products</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@model VmProduct
+<div class="products">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+
+            </div>
+            <div class="col-md-12">
+                <div class="filters-content">
+                    <div class="row grid">
+                        @foreach (var item in Model.Products)
+                        {
+                            <div class="col-lg-4 col-md-4 all des">
+                                <div class="product-item">
+                                    <a href="#"><img src="~/Uploads/@item.Image" alt=""></a>
+                                    <div class="down-content">
+                                        <a href="#"><h4>@item.Title</h4></a>
+                                        <h6>@item.Price ₼</h6>
+                                        <p>Lorem ipsume dolor sit amet, adipisicing elite. Itaque, corporis nulla aspernatur.</p>
+                                        <a asp-controller="Shopping" asp-action="addToCart" asp-route-id="@item.Id" class="btn @(Model.Cart != null && Model.Cart.Any(c=> c == item.Id.ToString())? "btn-danger":"btn-primary")">Add to cart</a>
+
+                                    </div>
+                                </div>
+                            </div>
+                        }
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
